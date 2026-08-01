@@ -1,4 +1,6 @@
 interface:
   display_name: "LifeOS 2026"
-  short_description: "识别当前状态，引导七问配置、日常流程，并按场景调用中文名言库"
+  short_description: "用 #lifeos 等关键词启动日程、任务、晨晚惯例、复盘、日报与目标"
   default_prompt: "使用 $lifeos-2026 开启 LifeOS 2026；如果这是首次使用，直接显示 A/B/C 新手开场白。"
+policy:
+  allow_implicit_invocation: true

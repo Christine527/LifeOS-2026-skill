@@ -1,0 +1,5 @@
+interface:
+  display_name: "LifeOS 晨间规划"
+  short_description: "结合活跃目标、当前瓶颈与今日日历，筛选最多三项高杠杆行动"
+  default_prompt: "使用 $lifeos-morning，结合我的活跃目标和今日日历完成晨间规划。"
+

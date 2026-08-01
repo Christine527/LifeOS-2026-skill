@@ -1,0 +1,5 @@
+interface:
+  display_name: "LifeOS 项目规格"
+  short_description: "用轻量 ISA 定义复杂项目的范围、反目标、验收标准、证据、决策与下一步"
+  default_prompt: "使用 $lifeos-project 建立或更新一份可以验收的 LifeOS 项目规格。"
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "LifeOS XP 结算"
+  short_description: "保守结算日常行动、目标成果、挑战、连续记录和永久等级，避免重复计分"
+  default_prompt: "使用 $lifeos-xp 计算并安全记录我今天的 LifeOS XP。"
+

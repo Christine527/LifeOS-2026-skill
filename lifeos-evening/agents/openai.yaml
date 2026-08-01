@@ -1,0 +1,5 @@
+interface:
+  display_name: "LifeOS 晚间复盘"
+  short_description: "用自然对话核对行动、结果、证据、卡点、XP、日报和明日重点"
+  default_prompt: "使用 $lifeos-evening 复盘今天，并整理结果、证据、XP 和明日重点。"
+

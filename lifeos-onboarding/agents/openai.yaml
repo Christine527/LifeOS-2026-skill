@@ -1,0 +1,4 @@
+interface:
+  display_name: "LifeOS 首次配置"
+  short_description: "用七个可跳过问题建立作息、目标、时间线、习惯、日历与 XP 设置"
+  default_prompt: "使用 $lifeos-onboarding，用七个可跳过的问题完成我的 LifeOS 首次配置，并确认目标进度总览所需的个人数据。"

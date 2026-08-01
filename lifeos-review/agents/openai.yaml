@@ -1,0 +1,4 @@
+interface:
+  display_name: "LifeOS 日报洞察"
+  short_description: "生成或预览基于事实的 Markdown 日报，并支持安全写入 Obsidian"
+  default_prompt: "使用 $lifeos-review，根据已确认事实生成或预览 LifeOS Markdown 日报；需要写入 Obsidian 时先确认仓库且不覆盖文件。"

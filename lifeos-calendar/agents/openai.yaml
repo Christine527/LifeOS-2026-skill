@@ -1,0 +1,5 @@
+interface:
+  display_name: "LifeOS 日历执行"
+  short_description: "安全读取、安排和回读日历中的目标行动、时间边界与完成状态"
+  default_prompt: "使用 $lifeos-calendar，把确认后的 LifeOS 计划安全写入日历并回读验证。"
+

@@ -1,0 +1,4 @@
+interface:
+  display_name: "LifeOS 目标系统"
+  short_description: "管理轻量 TELOS，并用锁定版式维护目标进度总览"
+  default_prompt: "使用 $lifeos-goals 梳理我的目标；如生成目标进度总览，保持网页与 Obsidian 版式不变，并先通过对话确认我的个人数据。"

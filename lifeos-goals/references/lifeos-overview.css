@@ -1,0 +1,569 @@
+/* LifeOS 目标进度总览 · Obsidian CSS Snippet */
+/* 视觉真源：references/goals-overview-preview.html */
+
+.lifeos-goals-dashboard {
+  --lifeos-bg: #F7F5F2;
+  --lifeos-card: #FFFFFF;
+  --lifeos-ink: #1C1C1E;
+  --lifeos-ink-light: #8E8E93;
+  --lifeos-ink-faint: #AEAEB2;
+  --lifeos-line: #E8E4DF;
+  --lifeos-accent: #B94A3D;
+  --lifeos-dark: #2A2A35;
+}
+
+.lifeos-goals-dashboard.markdown-preview-view,
+.lifeos-goals-dashboard.markdown-source-view {
+  background: var(--lifeos-bg);
+}
+
+.lifeos-goals-dashboard .inline-title,
+.lifeos-goals-dashboard .metadata-container,
+.lifeos-goals-dashboard .mod-header {
+  display: none !important;
+}
+
+.lifeos-goals-dashboard .markdown-preview-sizer {
+  max-width: 860px !important;
+  padding: 40px 32px 80px !important;
+}
+
+.lifeos-goals-dashboard .lifeos-overview,
+.lifeos-goals-dashboard .lifeos-overview * {
+  box-sizing: border-box;
+}
+
+.lifeos-goals-dashboard .lifeos-overview {
+  width: 100%;
+  color: var(--lifeos-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.lifeos-goals-dashboard .lifeos-page-header {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.lifeos-goals-dashboard .lifeos-page-title {
+  margin-bottom: 6px;
+  color: var(--lifeos-ink-light);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.lifeos-goals-dashboard .lifeos-page-sub {
+  color: var(--lifeos-ink-faint);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.lifeos-goals-dashboard .lifeos-card {
+  margin-bottom: 24px;
+  padding: 36px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--lifeos-card);
+}
+
+/* 年度进度 */
+.lifeos-goals-dashboard .lifeos-year {
+  padding: 40px 36px;
+  text-align: center;
+  background: linear-gradient(165deg, #FDF4F2 0%, #FAF0ED 100%);
+}
+
+.lifeos-goals-dashboard .lifeos-year-label,
+.lifeos-goals-dashboard .lifeos-habit-label,
+.lifeos-goals-dashboard .lifeos-missions-label {
+  color: var(--lifeos-ink-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.lifeos-goals-dashboard .lifeos-year-number {
+  margin-top: 16px;
+  color: var(--lifeos-accent);
+  font-size: 56px;
+  font-weight: 200;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.lifeos-goals-dashboard .lifeos-year-desc {
+  margin-top: 14px;
+  color: var(--lifeos-ink-faint);
+  font-size: 13px;
+}
+
+.lifeos-goals-dashboard .lifeos-year-bar {
+  height: 6px;
+  margin-top: 24px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: rgba(185, 74, 61, 0.12);
+}
+
+.lifeos-goals-dashboard .lifeos-year-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lifeos-accent);
+}
+
+/* Season */
+.lifeos-goals-dashboard .lifeos-season {
+  position: relative;
+  padding: 40px 36px;
+  color: #fff;
+  background: linear-gradient(155deg, #2A2A35 0%, #1F1F28 50%, #1A1A22 100%);
+}
+
+.lifeos-goals-dashboard .lifeos-season::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(185, 74, 61, 0.15) 0%, transparent 60%);
+}
+
+.lifeos-goals-dashboard .lifeos-season-badge {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 1;
+  display: flex;
+  width: 72px;
+  height: 72px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--lifeos-accent);
+}
+
+.lifeos-goals-dashboard .lifeos-season-badge small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.lifeos-goals-dashboard .lifeos-season-badge strong {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.lifeos-goals-dashboard .lifeos-season-label {
+  margin-bottom: 12px;
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.lifeos-goals-dashboard .lifeos-season-title {
+  max-width: calc(100% - 92px);
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.lifeos-goals-dashboard .lifeos-season-desc {
+  max-width: 78%;
+  margin-bottom: 32px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lifeos-goals-dashboard .lifeos-season-xp-label {
+  margin-bottom: 6px;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.lifeos-goals-dashboard .lifeos-season-xp strong {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.lifeos-goals-dashboard .lifeos-season-xp span {
+  margin-left: 4px;
+  color: rgba(255,255,255,0.3);
+  font-size: 18px;
+}
+
+.lifeos-goals-dashboard .lifeos-season-bar {
+  height: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.08);
+}
+
+.lifeos-goals-dashboard .lifeos-season-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lifeos-accent);
+}
+
+.lifeos-goals-dashboard .lifeos-season-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.lifeos-goals-dashboard .lifeos-season-stat strong {
+  display: block;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.lifeos-goals-dashboard .lifeos-season-stat span {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+}
+
+/* 时间线 */
+.lifeos-goals-dashboard .lifeos-timeline {
+  padding: 40px 44px 36px;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-top,
+.lifeos-goals-dashboard .lifeos-quest-top,
+.lifeos-goals-dashboard .lifeos-missions-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-label,
+.lifeos-goals-dashboard .lifeos-quest-label {
+  color: var(--lifeos-ink-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-badge {
+  padding: 4px 14px;
+  color: var(--lifeos-ink-faint);
+  border: 1px solid var(--lifeos-line);
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-svg {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 48px;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-svg svg {
+  display: block;
+  width: 360px;
+  max-width: 100%;
+  height: 180px;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-stats {
+  display: flex;
+  padding-top: 24px;
+  margin-bottom: 20px;
+  border-top: 1px solid var(--lifeos-line);
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-stat {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-stat + .lifeos-timeline-stat::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 1px;
+  height: 70%;
+  background: var(--lifeos-line);
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-stat strong {
+  display: block;
+  color: var(--lifeos-ink);
+  font-size: 32px;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-stat span {
+  display: block;
+  margin-top: 8px;
+  color: var(--lifeos-ink-faint);
+  font-size: 11px;
+}
+
+.lifeos-goals-dashboard .lifeos-timeline-note {
+  color: var(--lifeos-ink-faint);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* 习惯矩阵 */
+.lifeos-goals-dashboard .lifeos-habit {
+  padding: 32px;
+}
+
+.lifeos-goals-dashboard .lifeos-habit-label {
+  margin-bottom: 24px;
+}
+
+.lifeos-goals-dashboard .lifeos-habit table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.lifeos-goals-dashboard .lifeos-habit th,
+.lifeos-goals-dashboard .lifeos-habit td {
+  padding: 10px 8px;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.lifeos-goals-dashboard .lifeos-habit th {
+  padding-top: 0;
+  padding-bottom: 14px;
+  color: var(--lifeos-ink-faint);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.lifeos-goals-dashboard .lifeos-habit th:first-child,
+.lifeos-goals-dashboard .lifeos-habit td:first-child {
+  text-align: left;
+}
+
+.lifeos-goals-dashboard .lifeos-habit td:first-child {
+  color: var(--lifeos-ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.lifeos-goals-dashboard .lifeos-muted-dot {
+  color: var(--lifeos-ink);
+  opacity: 0.2;
+}
+
+.lifeos-goals-dashboard .lifeos-habit-streak {
+  margin-top: 20px;
+  color: var(--lifeos-ink-faint);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* 今日主线 */
+.lifeos-goals-dashboard .lifeos-quest {
+  padding: 32px;
+  border: 1px solid var(--lifeos-line);
+}
+
+.lifeos-goals-dashboard .lifeos-quest-pill {
+  padding: 5px 14px;
+  color: var(--lifeos-accent);
+  border-radius: 14px;
+  background: rgba(185,74,61,0.08);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lifeos-goals-dashboard .lifeos-quest-title {
+  margin-top: 20px;
+  color: var(--lifeos-ink);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.lifeos-goals-dashboard .lifeos-quest-desc {
+  margin-top: 8px;
+  color: var(--lifeos-ink-light);
+  font-size: 13px;
+}
+
+.lifeos-goals-dashboard .lifeos-quest-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.lifeos-goals-dashboard .lifeos-quest-tab {
+  padding: 6px 16px;
+  color: var(--lifeos-ink-light);
+  border: 1px solid var(--lifeos-line);
+  border-radius: 14px;
+  font-size: 12px;
+}
+
+.lifeos-goals-dashboard .lifeos-quest-tab.is-active {
+  color: #fff;
+  border-color: var(--lifeos-ink);
+  background: var(--lifeos-ink);
+}
+
+/* 人生任务 */
+.lifeos-goals-dashboard .lifeos-missions {
+  padding: 32px;
+}
+
+.lifeos-goals-dashboard .lifeos-missions-sort {
+  color: var(--lifeos-ink-faint);
+  font-size: 12px;
+}
+
+.lifeos-goals-dashboard .lifeos-missions-intro {
+  margin: 12px 0 22px;
+  color: var(--lifeos-ink-faint);
+  font-size: 11px;
+}
+
+.lifeos-goals-dashboard .lifeos-missions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.lifeos-goals-dashboard .lifeos-mission {
+  padding: 24px;
+  border: 1px solid var(--lifeos-line);
+  border-radius: 16px;
+  background: var(--lifeos-card);
+}
+
+.lifeos-goals-dashboard .lifeos-mission-icon {
+  margin-bottom: 14px;
+  font-size: 22px;
+}
+
+.lifeos-goals-dashboard .lifeos-mission-name {
+  margin-bottom: 4px;
+  color: var(--lifeos-ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lifeos-goals-dashboard .lifeos-mission-desc {
+  min-height: 36px;
+  margin-bottom: 18px;
+  color: var(--lifeos-ink-light);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.lifeos-goals-dashboard .lifeos-mission-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: var(--lifeos-ink-faint);
+  font-size: 11px;
+}
+
+.lifeos-goals-dashboard .lifeos-mission-bar {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--lifeos-line);
+}
+
+.lifeos-goals-dashboard .lifeos-mission-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lifeos-accent);
+}
+
+.lifeos-goals-dashboard .lifeos-mission.is-done .lifeos-mission-bar > span {
+  background: #5B8A64;
+}
+
+.lifeos-goals-dashboard .lifeos-mission-foot {
+  display: block;
+  margin-top: 8px;
+  color: var(--lifeos-ink-faint);
+  font-size: 10px;
+}
+
+.lifeos-goals-dashboard .lifeos-footer {
+  margin-top: 48px;
+  padding-top: 32px;
+  color: var(--lifeos-ink-faint);
+  border-top: 1px solid var(--lifeos-line);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .lifeos-goals-dashboard .markdown-preview-sizer {
+    padding: 24px 14px 56px !important;
+  }
+
+  .lifeos-goals-dashboard .lifeos-card {
+    padding: 26px 22px;
+  }
+
+  .lifeos-goals-dashboard .lifeos-season-title,
+  .lifeos-goals-dashboard .lifeos-season-desc {
+    max-width: calc(100% - 80px);
+  }
+
+  .lifeos-goals-dashboard .lifeos-season-stats {
+    gap: 22px;
+  }
+
+  .lifeos-goals-dashboard .lifeos-habit {
+    overflow-x: auto;
+  }
+
+  .lifeos-goals-dashboard .lifeos-missions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lifeos-goals-dashboard .lifeos-overview *,
+  .lifeos-goals-dashboard .lifeos-overview *::before,
+  .lifeos-goals-dashboard .lifeos-overview *::after {
+    transition: none !important;
+  }
+}

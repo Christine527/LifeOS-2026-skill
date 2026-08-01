@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeOS · 目标进度总览</title>
+<style>
+  :root {
+    --bg: #F7F5F2;
+    --card: #FFFFFF;
+    --ink: #1C1C1E;
+    --ink-light: #8E8E93;
+    --ink-faint: #AEAEB2;
+    --line: #E8E4DF;
+    --accent: #B94A3D;
+    --accent-soft: #D46558;
+    --gold: #C9A96E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    padding: 40px 32px;
+    max-width: 860px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Page Header */
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 1px;
+  }
+
+  /* Card Base */
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 24px;
+  }
+
+  /* ===== Timeline Card ===== */
+  .timeline {
+    padding: 40px 44px 36px;
+  }
+  .timeline-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .timeline-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+  }
+  .timeline-btn {
+    font-size: 12px;
+    color: var(--ink-faint);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 4px 14px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .timeline-btn:hover {
+    color: var(--ink-light);
+    border-color: var(--ink-light);
+  }
+  .timeline-svg-wrap {
+    margin: 40px 0 48px;
+    display: flex;
+    justify-content: center;
+  }
+  .timeline-stats {
+    display: flex;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    margin-bottom: 20px;
+  }
+  .timeline-stat {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .timeline-stat + .timeline-stat::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: var(--line);
+  }
+  .stat-value {
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.3px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+  .timeline-quote {
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+  }
+
+  /* ===== Season Card ===== */
+  .season {
+    background: linear-gradient(155deg, #2A2A35 0%, #1F1F28 50%, #1A1A22 100%);
+    color: #fff;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .season::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(185, 74, 61, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .season-badge {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 72px;
+    height: 72px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  .season-badge .lv {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+  .season-badge .num {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .season-season-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .season-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+  .season-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .season-xp-row {
+    margin-bottom: 12px;
+  }
+  .season-xp-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .season-xp-value {
+    font-size: 32px;
+    font-weight: 300;
+    color: #fff;
+  }
+  .season-xp-total {
+    font-size: 18px;
+    color: rgba(255,255,255,0.3);
+    margin-left: 4px;
+    font-weight: 300;
+  }
+  .season-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .season-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .season-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .season-stat-num {
+    font-size: 26px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+  }
+  .season-stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Year Progress ===== */
+  .year {
+    text-align: center;
+    padding: 40px 36px;
+    background: linear-gradient(165deg, #FDF4F2 0%, #FAF0ED 100%);
+  }
+  .year-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .year-num {
+    font-size: 56px;
+    font-weight: 200;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+  }
+  .year-desc {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 14px;
+    letter-spacing: 0.2px;
+  }
+  .year-bar {
+    margin-top: 24px;
+    height: 6px;
+    background: rgba(185,74,61,0.12);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .year-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+  }
+
+  /* ===== Habit Grid ===== */
+  .habit {
+    padding: 32px;
+  }
+  .habit-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .habit-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .habit-table th {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    padding: 0 8px 14px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .habit-table th:first-child {
+    text-align: left;
+  }
+  .habit-table td {
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 15px;
+  }
+  .habit-table td:first-child {
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .habit-streak {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== Quest Card ===== */
+  .quest {
+    padding: 32px;
+    border: 1px solid var(--line);
+  }
+  .quest-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .quest-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+  }
+  .quest-xp {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(185,74,61,0.08);
+    padding: 5px 14px;
+    border-radius: 14px;
+    letter-spacing: 0.3px;
+  }
+  .quest-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+  }
+  .quest-desc {
+    font-size: 13px;
+    color: var(--ink-light);
+    letter-spacing: 0.2px;
+  }
+  .quest-tabs {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .quest-tab {
+    font-size: 12px;
+    padding: 6px 16px;
+    border-radius: 14px;
+    color: var(--ink-light);
+    background: transparent;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quest-tab.active {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+
+  /* ===== Missions ===== */
+  .missions-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .missions-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+  }
+  .missions-sort {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.3px;
+  }
+  .missions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 640px) {
+    .missions-grid { grid-template-columns: 1fr; }
+  }
+  .mission {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s;
+  }
+  .mission:hover {
+    transform: translateY(-1px);
+  }
+  .mission-icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  .mission-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .mission-desc {
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .mission-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+  .mission-bar {
+    height: 3px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .mission-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-text {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 1px;
+  }
+  .footer-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="page-title">Life OS · 目标进度总览</div>
+  <div class="page-sub">UPDATED 2026-07-31</div>
+</div>
+
+<!-- Year Progress -->
+<div class="card year">
+  <div class="year-label">2026 年度进度</div>
+  <div class="year-num">58%</div>
+  <div class="year-desc">今年还剩 174 天，保持自己的节奏</div>
+  <div class="year-bar">
+    <div class="year-bar-fill" style="width: 58%"></div>
+  </div>
+</div>
+
+<!-- Season Card -->
+<div class="card season">
+  <div class="season-badge">
+    <div class="lv">LV</div>
+    <div class="num">1</div>
+  </div>
+  <div class="season-season-label">Season 01</div>
+  <div class="season-title">成为想成为的人</div>
+  <div class="season-desc">当下可见结果的，往往是微不足道的。</div>
+
+  <div class="season-xp-row">
+    <div class="season-xp-label">总经验</div>
+    <div>
+      <span class="season-xp-value">0</span>
+      <span class="season-xp-total">/ 300 XP</span>
+    </div>
+    <div class="season-bar">
+      <div class="season-bar-fill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div class="season-stats">
+    <div>
+      <div class="season-stat-num">3</div>
+      <div class="season-stat-label">进行中</div>
+    </div>
+    <div>
+      <div class="season-stat-num">0</div>
+      <div class="season-stat-label">已达成</div>
+    </div>
+    <div>
+      <div class="season-stat-num">0</div>
+      <div class="season-stat-label">连续行动</div>
+    </div>
+  </div>
+</div>
+
+<!-- Timeline Card -->
+<div class="card timeline">
+  <div class="timeline-top">
+    <div class="timeline-label">Life Timeline</div>
+    <div class="timeline-btn">调整</div>
+  </div>
+  <div class="timeline-svg-wrap">
+    <svg width="360" height="180" viewBox="0 0 360 180">
+      <!-- 弧线在 180px 画布中垂直居中 -->
+      <path d="M 20 75 Q 180 135 340 75" 
+            stroke="#E8E4DF" stroke-width="10" 
+            fill="none" stroke-linecap="round"/>
+      <!-- 进度弧线 28.7% -->
+      <path d="M 20 75 Q 180 135 340 75" 
+            stroke="#B94A3D" stroke-width="10" 
+            fill="none" stroke-linecap="round"
+            stroke-dasharray="380"
+            stroke-dashoffset="271"/>
+    </svg>
+  </div>
+  <div class="timeline-stats">
+    <div class="timeline-stat">
+      <div class="stat-value">28.7%</div>
+      <div class="stat-label">已经历的人生</div>
+    </div>
+    <div class="timeline-stat">
+      <div class="stat-value">23 / 80</div>
+      <div class="stat-label">岁</div>
+    </div>
+  </div>
+  <div class="timeline-quote">时间不是催促，是提醒你把今天活成自己的选择。</div>
+</div>
+
+<!-- Habit Grid -->
+<div class="card habit">
+  <div class="habit-label">习惯打卡</div>
+  <table class="habit-table">
+    <thead>
+      <tr>
+        <th>习惯</th>
+        <th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th>
+        <th>连击</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>午睡</td>
+        <td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td>
+        <td style="color: var(--ink-faint); font-size: 12px;">0天</td>
+      </tr>
+      <tr>
+        <td>健身房</td>
+        <td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td><td style="opacity:0.2">●</td>
+        <td style="color: var(--ink-faint); font-size: 12px;">0天</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="habit-streak">🔥 连续 0 天</div>
+</div>
+
+<!-- Quest Card -->
+<div class="card quest">
+  <div class="quest-top">
+    <div class="quest-label">Today's Quest</div>
+    <div class="quest-xp">+20 XP</div>
+  </div>
+  <div class="quest-title">环游世界：计划下一站非洲大草原</div>
+  <div class="quest-desc">完成比完美更重要 · 预计 30 分钟</div>
+  <div class="quest-tabs">
+    <button class="quest-tab active">全部</button>
+    <button class="quest-tab">事业</button>
+    <button class="quest-tab">财富</button>
+    <button class="quest-tab">成长</button>
+    <button class="quest-tab">生活</button>
+  </div>
+</div>
+
+<!-- Missions -->
+<div class="card" style="padding: 32px;">
+  <div class="missions-top">
+    <div class="missions-label">Life Missions</div>
+    <div class="missions-sort">按进度 ↓</div>
+  </div>
+  <div class="missions-grid">
+
+    <div class="mission">
+      <div class="mission-icon">💰</div>
+      <div class="mission-name">月入 9 万</div>
+      <div class="mission-desc">当前月入 8 万 · 乐器品牌蒸蒸日上</div>
+      <div class="mission-meta">
+        <span>进行中</span>
+        <span>89%</span>
+      </div>
+      <div class="mission-bar">
+        <div class="mission-bar-fill" style="width: 89%"></div>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-icon">✈️</div>
+      <div class="mission-name">环游世界</div>
+      <div class="mission-desc">已去 4 国 · 下一站非洲大草原</div>
+      <div class="mission-meta">
+        <span>进行中</span>
+        <span>2%</span>
+      </div>
+      <div class="mission-bar">
+        <div class="mission-bar-fill" style="width: 2%"></div>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-icon">🐕</div>
+      <div class="mission-name">养 10 只哈士奇</div>
+      <div class="mission-desc">目前养了一只猫</div>
+      <div class="mission-meta">
+        <span>进行中</span>
+        <span>0%</span>
+      </div>
+      <div class="mission-bar">
+        <div class="mission-bar-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-icon">💃</div>
+      <div class="mission-name">养 7 个面首</div>
+      <div class="mission-desc">人生里程碑</div>
+      <div class="mission-meta">
+        <span>未开始</span>
+        <span>0%</span>
+      </div>
+      <div class="mission-bar">
+        <div class="mission-bar-fill" style="width: 0%; opacity: 0.3;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-text">
+    Life OS · 由 Codex 自动生成
+  </div>
+</div>
+
+</body>
+</html>

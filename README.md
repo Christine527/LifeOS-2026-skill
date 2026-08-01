@@ -1,4 +1,4 @@
-# LifeOS Public Skill
+# LifeOS 2026/skill
 🎉欢迎使用 LifeOS！
 
 LifeOS 是一套面向普通 Codex 用户的轻量人生行动系统。

@@ -1,6 +1,6 @@
-# LifeOS Public
+# LifeOS Public Skill
 
-这是 LifeOS 对外版的第一个正式版本，保留系统运行能力，同时不携带个人运行数据。
+这是面向 Codex 的 LifeOS Skill 组合包，不是 App 安装包。它保留系统运行能力，同时不携带个人运行数据。
 
 ## 包含内容
 

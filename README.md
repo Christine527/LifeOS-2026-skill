@@ -1,4 +1,5 @@
 # LifeOS 2026/skill
+🎉欢迎使用 LifeOS！
 
 > **让 AI 运营你的一天。**
 >
@@ -40,12 +41,12 @@ flowchart LR
 
 **晚间复盘：** 区分行动、结果、证据与卡点，再生成日报、结算 XP，并提出明日最多三项重点。
 
-## 快速开始
+## 快速体验
 
 安装完成后，可以直接对 Codex 说：
 
 ```text
-LifeOS 新手入门
+LifeOS 介绍
 开始晨间惯例
 看看我今天还有哪些空档，把三件重点安排进日历
 开始晚间复盘
@@ -87,6 +88,4 @@ LifeOS 不是要求你更换全部文件夹的 Obsidian 模板，也不是把日
 
 ## 作者
 
-作者：[你的好友谢谢](https://github.com/Christine527)（GitHub：[@Christine527](https://github.com/Christine527)）
-
-教程与公开资料署名：来源 @你的好友谢谢。
+作者：[你的好友谢谢](https://github.com/Christine527)

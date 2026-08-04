@@ -252,11 +252,42 @@ season_subtitle: <主题引言>
 
 ## CSS Snippet
 
+### 正确命名（⚠️ 必须严格一致，错一个字样式都不加载）
+
+- **源文件**（在 skill 里）：`lifeos-goals/references/lifeos-overview.css`
+- **复制到 Obsidian 后的文件名**（必须完全相同）：`lifeos-overview.css`
+- **Obsidian 设置中显示并要启用的 Snippet 名称**（即去掉 `.css` 后缀）：`lifeos-overview`
+- **绝对不要**命名为 `lifeos-goals.css`、`goals-overview.css` 或其他任何变体，否则名称不匹配，样式完全不生效。
+
+### 安装与启用步骤（首次生成前必须走完）
+
 放置位置：`<你的Obsidian仓库>/.obsidian/snippets/lifeos-overview.css`
 
-启用方式：设置 → 外观 → CSS 代码片段 → 点击刷新 → 开启 `lifeos-overview`
+启用步骤：
+1. 设置 → 外观 → 向下滚动到「CSS 代码片段」区域
+2. 点击「刷新」按钮（🔄），确认列表中出现 **`lifeos-overview`**（不是别的名字）
+3. 打开 `lifeos-overview` 右侧的开关
+4. 回到「目标进度总览」笔记，切换一次笔记或关闭重开 Obsidian，即可看到完整视觉效果
 
 参见 [lifeos-overview.css](lifeos-overview.css) 获取完整样式。
+
+### ⚠️ 生成前强制自检清单
+
+LifeOS 在为用户首次生成 / 写入「目标进度总览」页面前，必须先按以下顺序主动询问并引导用户完成：
+
+1. **文件存在确认**：问用户是否已把 `lifeos-overview.css` 放到 `<Obsidian仓库>/.obsidian/snippets/` 目录
+2. **文件名核对**：明确告诉用户文件必须叫 `lifeos-overview.css`，不是 `lifeos-goals.css` 或其他名字
+3. **Obsidian 侧开关确认**：告诉用户在设置 → 外观里刷新 Snippet 列表并打开 **`lifeos-overview`** 的开关
+4. **生效验证**：提醒用户若未立即刷新，切换一次笔记回来即可
+5. 以上 4 步走完后，再生成并写入个人目标进度总览页面。用户明确选「跳过 CSS 检查」时才进入 Plan B inline style 兜底。
+
+### Plan B：未启用 CSS Snippet 时的兜底方案
+
+Obsidian 模板 `assets/goals-overview-obsidian-template.md` 的每个模块都自带了与设计系统一致的 inline style。因此：
+
+1. **未安装 / 未启用 CSS Snippet**：页面也能显示卡片、圆角、砖红进度条、深色 Season 卡片和两列任务网格，不会退化成纯文本堆叠。
+2. **已启用 CSS Snippet**：`lifeos-*` 类选择器仍然生效，会覆盖 inline style 中未使用 `!important` 的属性，视觉效果与设计真源保持完全一致。
+3. **无论哪种情况**，预览演示数据（示例习惯、示例任务、预览年龄）都不得写入个人页面；缺失字段统一显示"未记录 / 未确认"。
 
 ## 自动写入规则
 

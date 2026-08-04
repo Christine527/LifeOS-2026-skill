@@ -17,7 +17,9 @@ description: LifeOS 轻量 TELOS（目标因果结构）与目标进度总览系
 4. 同时只保留最多三个活跃目标；其他目标进入目标库，不删除。
 5. 为每个活跃目标写明下一里程碑、成功证据和当前瓶颈。
 6. 展示拟修改内容，经用户确认并备份后才更新 `goals.md`。
-7. 如需生成、更新或修复目标进度总览，完整读取 [references/goals-overview-layout-lock.md](references/goals-overview-layout-lock.md) 与 [references/goals-overview.md](references/goals-overview.md)，使用 [assets/goals-overview-obsidian-template.md](assets/goals-overview-obsidian-template.md) 的结构写入 Obsidian。
+7. 如需生成、更新或修复目标进度总览：
+   - **前置检查（优先执行）**：完整读取 [references/goals-overview.md](references/goals-overview.md) 的「CSS Snippet」章节，按「生成前强制自检清单」主动引导用户完成 `lifeos-overview.css` 的文件命名核对、安装位置确认和 Obsidian Snippet 开关启用。用户明确跳过才使用 Plan B inline style 兜底。
+   - 完整读取 [references/goals-overview-layout-lock.md](references/goals-overview-layout-lock.md) 与 [references/goals-overview.md](references/goals-overview.md)，使用 [assets/goals-overview-obsidian-template.md](assets/goals-overview-obsidian-template.md) 的结构写入 Obsidian。
 8. 首次为一个用户生成总览，或相关字段仍为待确认时，先通过自然对话确认人生时间线、习惯、目标、Season/XP 与今日主线；只写入用户确认的数据。
 
 ## 判断原则

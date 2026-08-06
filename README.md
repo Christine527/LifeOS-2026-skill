@@ -29,10 +29,11 @@ LifeOS 不只是保存计划，而是帮助你重复完成一个行动闭环。
 
 ## 它如何运行？
 >
-<img width="3880" height="1431" alt="目标惯例流程" src="https://github.com/user-attachments/assets/4f343c68-db29-4564-af1b-f0438740925c" />
+<img width="3880" height="1431" alt="目标管理流程 plus" src="https://github.com/user-attachments/assets/ef4b6638-35a9-4fb4-a131-bedc097f5aea" />
 
 
-
+>
+>
 **晨间规划：** 读取活跃目标、当前瓶颈、今日日历，筛选习惯（固定项）、杠杆任务、普通任务、挑战项。
 
 **日历执行：** 读取已有承诺和可用时间，经确认后创建或调整日程，并在修改后回读核验；只需要计划时保持只读。
@@ -41,10 +42,11 @@ LifeOS 不只是保存计划，而是帮助你重复完成一个行动闭环。
 
 ## 快速体验
 >
-<img width="3880" height="1431" alt="新的" src="https://github.com/user-attachments/assets/76cf28b2-a79b-44f0-8489-4331ebea8143" />
+<img width="3880" height="1431" alt="用户旅程 plus" src="https://github.com/user-attachments/assets/ce629502-e3a2-4c7a-9b33-f195adf1f982" />
 
 
-
+>
+>
 安装完成后，可以直接对 Codex 说：
 
 ```text

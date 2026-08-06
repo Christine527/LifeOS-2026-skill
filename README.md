@@ -28,6 +28,7 @@
 LifeOS 不只是保存计划，而是帮助你重复完成一个行动闭环。
 
 ## 它如何运行？
+>
 <img width="3880" height="1431" alt="目标惯例流程" src="https://github.com/user-attachments/assets/4f343c68-db29-4564-af1b-f0438740925c" />
 
 
@@ -39,7 +40,9 @@ LifeOS 不只是保存计划，而是帮助你重复完成一个行动闭环。
 **晚间复盘：** 区分行动、结果、证据与卡点，再生成日报、结算 XP，并提出明日最多三项重点。
 
 ## 快速体验
-<img width="3880" height="1431" alt="用户旅程" src="https://github.com/user-attachments/assets/1277f347-8603-4139-a4dd-b3ffbffbfedb" />
+>
+<img width="3880" height="1431" alt="新的" src="https://github.com/user-attachments/assets/76cf28b2-a79b-44f0-8489-4331ebea8143" />
+
 
 
 安装完成后，可以直接对 Codex 说：

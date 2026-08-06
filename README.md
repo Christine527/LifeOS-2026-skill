@@ -1,4 +1,4 @@
-<img width="2710" height="1510" alt="微信图片_20260806103054_592_57" src="https://github.com/user-attachments/assets/df7b552e-be6e-4d84-8852-90f28621ab3f" /># LifeOS 2026/skill
+
 🎉欢迎使用 LifeOS！
 
 > **让 AI 运营你的一天。**
@@ -17,8 +17,7 @@
 >
 >
 <img width="2710" height="1510" alt="微信图片_20260806103054_592_57" src="https://github.com/user-attachments/assets/7087fdfc-c06d-46b9-bb5c-8528f6571d55" />
->
->
+
 ## LifeOS 解决什么问题？
 
 目标写了很多，真正进入今天的却很少。LifeOS 每天帮你回答：
